@@ -1,0 +1,35 @@
+-- function to  calculate length of a list
+len :: [a] -> Int
+len []  = 0
+len (x:xs) = 1 + len xs
+
+-- function to check if a number is even
+isEven :: Int -> Bool
+isEven num = num `mod` 2 == 0
+
+-- function to split a string by space
+splitBySpace :: String -> [String]
+splitBySpace "" = [""]
+splitBySpace (x:xs)
+    | x == ' ' = "" : remaining
+    | otherwise =  (x : head remaining) : tail remaining
+    where
+        remaining = splitBySpace xs
+
+-- reverses a given word
+reverseString :: String -> String
+reverseString "" = ""
+reverseString (x : xs) = reverseString xs ++ [x]
+
+-- function to check if a word is palindrome
+isPalindrome :: String -> Bool
+isPalindrome "" = True
+isPalindrome word = word ==  (reverseString word)
+
+evenAndPalindromeStrings :: String -> [String]
+evenAndPalindromeStrings "" = []
+evenAndPalindromeStrings string =
+    [word | word <- wordsInStrings, isPalindrome word, isWordOfEvenLength word]
+    where 
+        wordsInStrings = splitBySpace string
+        isWordOfEvenLength word = isEven (len word)
