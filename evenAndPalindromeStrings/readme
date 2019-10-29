@@ -1,0 +1,10 @@
+Takes a string as an input and returns the words in the string that are of even length and are also palindromes.
+Input - "abba cbbc cbc"
+Ouptut - ["abba","cbbc"]
+Psuedo code - 
+1) Break the string by spaces into a list of words
+2) For each word - 
+if it is of even length and is a palindrome
+pick it as an answer
+
+NOTE - A string is just a list of chars
